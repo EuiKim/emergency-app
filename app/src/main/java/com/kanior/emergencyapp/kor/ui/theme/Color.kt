@@ -1,4 +1,4 @@
-package com.kanior.emergencyapp.korean.ui.theme
+package com.kanior.emergencyapp.kor.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

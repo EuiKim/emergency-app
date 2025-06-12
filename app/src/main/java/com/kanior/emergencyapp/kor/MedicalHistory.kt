@@ -1,4 +1,4 @@
-package com.kanior.emergencyapp.korean
+package com.kanior.emergencyapp.kor
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,24 +11,37 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
-import com.kanior.emergencyapp.korean.ui.theme.EmergencyAppTheme
+import com.kanior.emergencyapp.kor.ui.theme.EmergencyAppTheme
 
-class SelectActivity : ComponentActivity() {
+class MedicalHistory : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             EmergencyAppTheme {
-
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Greeting2(
+                        name = "Android",
+                        modifier = Modifier.padding(innerPadding)
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-fun Greeting(navController: NavController) {
+fun Greeting2(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello"
+        text = "Hello $name!",
+        modifier = modifier
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    EmergencyAppTheme {
+        Greeting2("Android")
+    }
 }

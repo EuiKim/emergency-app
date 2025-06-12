@@ -1,6 +1,5 @@
-package com.kanior.emergencyapp.korean.ui.theme
+package com.kanior.emergencyapp.kor.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
