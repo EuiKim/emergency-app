@@ -23,7 +23,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.kanior.emergencyapp.kor.BasicQuestionMenu
 import com.kanior.emergencyapp.ui.theme.EmergencyAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -44,7 +43,7 @@ fun AppNavigation() {
     NavHost(navController, startDestination = "languages") {
         composable("languages") { Languages(navController) }
         composable("korMenu") { KorMenu(navController) }
-        composable("korBasicQuestionMenu") { BasicQuestionMenu(navController) }
+//        composable("korBasicQuestionMenu") { BasicQuestionMenu(navController) }
     }
 }
 
