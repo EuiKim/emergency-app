@@ -1,6 +1,8 @@
 package com.kanior.emergencyapp
 
 import android.os.Bundle
+import android.webkit.WebView
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,9 +28,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -49,6 +54,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -60,12 +66,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             EmergencyAppTheme {
-//                AppNavigation()
-//                TextEx()
-//                ButtonEx()
-//                RememberEx()
-//                ColumnEx()
-                TextFieldEx()
+                WebViewEx()
             }
         }
     }
@@ -434,7 +435,7 @@ fun ColumnRowEx() {
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun ColumnRowEx2() {
     Column(
@@ -503,6 +504,118 @@ fun ColumnRowEx2() {
         }
     }
 }
+
+//@Preview(showBackground = true)
+@Composable
+fun CardEx() {
+    Column {
+        CardInner("1")
+        CardInner("2")
+    }
+}
+
+@Composable
+fun CardInner(txt: String) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+            .padding(10.dp),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 3.dp
+        ),
+        shape = RoundedCornerShape(50.dp),
+        border = BorderStroke(1.dp, Color.Black)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.LightGray),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = txt,
+                fontSize = 30.sp
+            )
+        }
+    }
+
+}
+
+//@Preview(showBackground = true)
+@Composable
+fun WebViewEx() {
+    AndroidView(
+        factory = {
+            WebView(it).apply {
+                loadUrl("https://www.naver.com")
+            }
+        }
+    )
+}
+
+//@Preview(showBackground = true)
+@Composable
+fun SurfaceEx() {
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp),
+        color = Color.Red,
+        shape = RoundedCornerShape(200.dp),
+        shadowElevation = 20.dp
+    ) {
+        Button(
+            onClick = {},
+            colors = ButtonDefaults.outlinedButtonColors(
+                contentColor = Color.Green
+            )
+        ) {
+            Text("클릭해보세요!")
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SurfaceEx2() {
+    Surface(
+        modifier = Modifier
+            .fillMaxSize(),
+        color = Color.LightGray,
+        border = BorderStroke(2.dp, Color.Red),
+        contentColor = Color.Blue
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Surface(
+                modifier = Modifier
+                    .size(200.dp),
+                color = Color.Red
+            ) {
+                Text("This is Jetpack Compose")
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+            Text("This is Jetpack Compose Ex")
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
