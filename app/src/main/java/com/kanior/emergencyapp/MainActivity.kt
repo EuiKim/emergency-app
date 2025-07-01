@@ -26,16 +26,31 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -576,7 +591,7 @@ fun SurfaceEx() {
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun SurfaceEx2() {
     Surface(
@@ -606,7 +621,88 @@ fun SurfaceEx2() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
+//@Preview(showBackground = true)
+@Composable
+fun ScaffoldEx() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text("Main")
+                },
+                navigationIcon = {
+                    IconButton(onClick = {}) {
+                        Icon(Icons.Default.Add, contentDescription = "add")
+                    }
+                },
+                actions = {
+                    Button(onClick = {}) {
+                        Text("Btn")
+                    }
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = Color.Red)
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = {}) {
+                Icon(Icons.Default.Menu, contentDescription = "Menu")
+            }
+        },
+        bottomBar = {
+            BottomAppBar(
+                containerColor = Color.Red
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    IconButton(onClick = {}) {
+                        Icon(Icons.Default.Home, contentDescription = "Home")
+                    }
+                    IconButton(onClick = {}) {
+                        Icon(Icons.Default.Favorite, contentDescription = "Favorite")
+                    }
+                    IconButton(onClick = {}) {
+                        Icon(Icons.Default.Settings, contentDescription = "Settings")
+                    }
+                }
+            }
+        }
+    ) { paddingValues ->
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            Text("This is content.")
+        }
 
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun RecycleEx() {
+    MyContent {
+        Text(
+            text = "안녕",
+            fontSize = 100.sp,
+            color = Color.Red
+        )
+    }
+}
+
+@Composable
+fun MyContent(content: @Composable () -> Unit) {
+    Column {
+        content()
+        content()
+        content()
+        content()
+        content()
+    }
+}
 
 
 
